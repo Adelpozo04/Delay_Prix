@@ -20,7 +20,7 @@
                     "id": "efddf0a6-e813-4f06-939b-9393da28adc9",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "SlowTap(duration=0.5)",
                     "initialStateCheck": false
                 },
                 {
@@ -55,7 +55,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
+                    "name": "forward",
                     "id": "77d164cb-4f17-4b60-83b3-1c0c12b3389b",
                     "path": "<Keyboard>/w",
                     "interactions": "",
@@ -66,7 +66,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
+                    "name": "backward",
                     "id": "ef184c0b-3fe9-4dd5-bd5e-c9a97ceecea7",
                     "path": "<Keyboard>/s",
                     "interactions": "",
@@ -91,6 +91,61 @@
                     "name": "right",
                     "id": "8abcbcd6-400d-420b-bc0c-d9b4e5815636",
                     "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "3D Vector",
+                    "id": "fdb68e00-ee24-4c4d-b763-122c8e782a8e",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "ef09229f-e337-4c4d-9d49-8d0d88913c46",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "b03eed8a-e584-4150-a7c9-d193ee95cdba",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "fc96ed4f-0e6f-4088-8b8f-ddbc4af6b511",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "b9ec86d1-f258-4bf8-aa42-2ea03ffeb1c1",
+                    "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
