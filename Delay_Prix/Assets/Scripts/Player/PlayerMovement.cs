@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,25 +13,28 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] Camera myCam_;
 
+    [SerializeField] private Animator myAni_;
+
+    [SerializeField] private GameObject model_;
+
     #endregion
 
     #region properties
 
-    private CharacterController myCC_;
-
-    private Animator myAni_;
+    private CharacterController myCC_;   
 
     private Vector3 dir_;
 
     private bool running_ = false;
+
+    private CameraMovement myCamMov_;
+
 
     #endregion
 
     #region parameters
 
     [SerializeField] private float speed_ = 5;
-
-    [SerializeField] private float rotationSpeed_ = 5;
 
     [SerializeField] private float acceleration_ = 5;
 
@@ -42,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     {
         
         myCC_= GetComponent<CharacterController>();
-        myAni_= GetComponent<Animator>();
+        myCamMov_= GetComponent<CameraMovement>();
         
 
     }
@@ -73,6 +77,12 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 localXZ = Quaternion.Euler(0, camRot, 0) * dir_;
 
+        if (dir_ != Vector3.zero)
+        {
+            myCamMov_.TurnModelToCamera();
+            
+        }
+
         if (running_)
         {
             myCC_.SimpleMove((speed_ + acceleration_) * localXZ);
@@ -80,10 +90,12 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             myCC_.SimpleMove(speed_ * localXZ);
-        } 
+        }
 
-        myAni_.SetFloat("VelocityZ", myCC_.velocity.z);
-        myAni_.SetFloat("VelocityX", myCC_.velocity.x);
+
+
+        myAni_.SetFloat("VelocityZ", dir_.z);
+        myAni_.SetFloat("VelocityX", dir_.x);
         myAni_.SetBool("Running", running_);
 
     }

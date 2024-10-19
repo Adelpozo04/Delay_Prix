@@ -26,15 +26,16 @@ public class FollowPlayer : MonoBehaviour
 
         Vector3 behindTarget = player_.transform.position - separation_ * player_.transform.forward;
 
-        
-        pos.x = Mathf.Lerp(transform.position.x, behindTarget.x, interpolation);
+
+        //pos.x = Mathf.Lerp(transform.position.x, behindTarget.x, interpolation);
         pos.z = Mathf.Lerp(transform.position.z, behindTarget.z, interpolation);
         pos.y = Mathf.Lerp(transform.position.y, behindTarget.y + cameraHigh_, interpolation);
-        
+
 
         transform.position = pos;
 
         transform.LookAt(player_.transform.position);
 
     }
+
 }
