@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
 
-public class PlayerJump : MonoBehaviour
+public class PlayerRoll : MonoBehaviour
 {
 
     #region properties
@@ -28,30 +27,12 @@ public class PlayerJump : MonoBehaviour
 
     #endregion
 
-    //Cambiar todos los isgrounded por el raycast
-
-    private void ApplyGravity()
-    {
-        move.y = actualVelocity;
-
-        if (grounded && move.y < 0)
-        {
-            actualVelocity = 0;
-        }
-        else
-        {
-            actualVelocity -= gravity * Time.deltaTime;
-        }
-
-
-    }
-
-    public void Jump(InputAction.CallbackContext context)
+    public void Roll(InputAction.CallbackContext context)
     {
 
         if (grounded && context.started)
         {
-            actualVelocity = jumpForce;       
+            actualVelocity = jumpForce;
         }
 
     }
@@ -59,16 +40,14 @@ public class PlayerJump : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        myCC_= GetComponent<CharacterController>();
+
+        myCC_ = GetComponent<CharacterController>();
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        ApplyGravity();
 
         myCC_.Move(move * Time.deltaTime);
 

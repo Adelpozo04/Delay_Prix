@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -58,16 +59,22 @@ public class GameManager : MonoBehaviour
         if (countScore)
         {
             score = (int)currentTime_  * 1000;
+
+            PlayerPrefs.SetInt("TestScore", score);
         }
 
-        //ChangeToScoreScreen
+        SceneManager.LoadScene(2);
 
     }
 
     public void RestartPlayer()
     {
 
+        player_.GetComponent<CharacterController>().enabled = false;    
+
         player_.transform.position = current_checkpoint;
+
+        player_.GetComponent<CharacterController>().enabled = true;        
 
     }
 
