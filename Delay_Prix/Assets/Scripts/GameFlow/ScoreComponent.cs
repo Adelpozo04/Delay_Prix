@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
+//Shows the score when the player ends the match, there is plenty of funtionalities to implement but not right now
 public class ScoreComponent : MonoBehaviour
 {
 

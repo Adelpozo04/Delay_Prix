@@ -17,6 +17,7 @@ public class CheckpointComponent : MonoBehaviour
 
     #endregion
 
+    //When the player enters in the zone the current checkpoint changes to this one. Also there is a bool which stops the player of taking the same checkpoint several times.
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Player") && !checkpointTaken_)
@@ -31,15 +32,4 @@ public class CheckpointComponent : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -40,6 +40,31 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
+    //Updates the direction where the player is moving
+    public void ChangeDir(InputAction.CallbackContext context)
+    {
+        dir_ = context.ReadValue<Vector3>();
+    }
+
+    //Detects if the player is pressing the button of running to enter in that state and stop it when he stop pressing it
+    public void Running(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            running_ = true;
+        }
+        else if (context.phase == InputActionPhase.Performed || context.phase == InputActionPhase.Canceled)
+        {
+            running_ = false;
+        }
+
+    }
+
+    //Returns the direction of movement of the player
+    public Vector3 GetDir()
+    {
+        return dir_;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -51,29 +76,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public void ChangeDir(InputAction.CallbackContext context)
-    {
-        dir_ = context.ReadValue<Vector3>();
-    }
-
-    public void Running(InputAction.CallbackContext context)
-    {
-        if(context.phase == InputActionPhase.Started)
-        {
-            running_ = true;
-        }
-        else if(context.phase == InputActionPhase.Performed || context.phase == InputActionPhase.Canceled)
-        {
-            running_ = false;
-        }
-
-    }
-
-    public Vector3 GetDir()
-    {
-        return dir_;
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -82,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 localXZ = Quaternion.Euler(0, camRot, 0) * dir_;
 
+        //Whenever the player is moving its model must be facing where the camera faces
         if (dir_ != Vector3.zero)
         {
             myCamMov_.TurnModelToCamera();

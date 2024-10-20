@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Timeline;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
@@ -14,11 +13,11 @@ public class Timer : MonoBehaviour
         Seconds
     }
 
-
     [SerializeField] private TimeFormat timeFormat_;
 
     [SerializeField] private TextMeshProUGUI timeLeft_;
 
+    //Change the representation of the time in screen depending on the format choosen.
     public void ChangeTimeShown(float time)
     {
 
@@ -58,15 +57,4 @@ public class Timer : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

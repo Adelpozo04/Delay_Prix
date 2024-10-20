@@ -28,7 +28,7 @@ public class PlayerJump : MonoBehaviour
 
     #endregion
 
-    //Cambiar todos los isgrounded por el raycast
+    //Apply a specified gravity to the velocity so the vector move can reduce its force up until it reach 0 
 
     private void ApplyGravity()
     {
@@ -45,6 +45,9 @@ public class PlayerJump : MonoBehaviour
 
 
     }
+
+    //Apply the jumpforce to the actualvelocity, which will be apply then in the method ApplyGravity to the vector move
+    //which is used to make the movement by using the character controller
 
     public void Jump(InputAction.CallbackContext context)
     {
@@ -64,7 +67,7 @@ public class PlayerJump : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    //We use a raycast down to check if the player is touching what is considered as ground
     void FixedUpdate()
     {
 
@@ -74,12 +77,9 @@ public class PlayerJump : MonoBehaviour
 
         grounded = (Physics.Raycast(transform.position, Vector3.down * (myCC_.height / 1.5f), LayerMask.NameToLayer("Ground")));
 
-        Debug.DrawRay(transform.position, Vector3.down * myCC_.height, Color.red);
+        //Debug.DrawRay(transform.position, Vector3.down * myCC_.height, Color.red);
 
         myAni_.SetBool("OnGround", grounded);
-
-
-        //hacer un raycast hacia abajo para comprobar si se puede saltar
 
 
     }

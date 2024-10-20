@@ -5,6 +5,7 @@ using UnityEngine;
 public class GoalComponent : MonoBehaviour
 {
 
+    //Finish the match when the player touch it
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -15,15 +16,4 @@ public class GoalComponent : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

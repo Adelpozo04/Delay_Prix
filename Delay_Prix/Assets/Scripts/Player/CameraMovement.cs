@@ -27,7 +27,7 @@ public class CameraMovement : MonoBehaviour
 
     #endregion
 
-
+    //Updates de direction where the camera must look at
     public void MoveCamera(InputAction.CallbackContext context)
     {
 
@@ -35,16 +35,10 @@ public class CameraMovement : MonoBehaviour
 
     }
 
+    //Turn the player model to face where the camera is facing
     public void TurnModelToCamera()
     {
         model_.transform.right = mainCam_.transform.right;
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame

@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//class that controls all the game flow during a match
 public class GameManager : MonoBehaviour
 {
 
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    //Set the current checkpoint of the player
     public void SetCurrentCheckpoint(Vector3 checkpoint)
     {
 
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //Finish the match counting the score depending on if the player ran out of time or if he reached the goal
     public void FinishMatch(bool countScore)
     {
 
@@ -67,6 +70,8 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //Returns the player to the checkpoint
+    //It has to disable the character controller in order to stop its position change during the teleport
     public void RestartPlayer()
     {
 
@@ -78,6 +83,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //Make thhe GameManager a singletone
     private void Awake()
     {
         instance_ = this;
@@ -95,6 +101,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //check the time of the match and update the timer
         if (!stopTime_)
         {
             if (currentTime_ <= 0)

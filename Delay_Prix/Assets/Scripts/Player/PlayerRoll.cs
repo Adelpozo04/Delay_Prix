@@ -41,12 +41,12 @@ public class PlayerRoll : MonoBehaviour
 
     #endregion
 
+    //Initiates the coroutine of the roll and makes the collider smaller. Also change the states of some bools that are used on the update.
     public void Roll(InputAction.CallbackContext context)
     {
 
         if (grounded_ && context.started && canRoll_)
         {
-            //Flip the cam and model while rolling
 
             canRoll_ = false;
 
@@ -80,12 +80,13 @@ public class PlayerRoll : MonoBehaviour
 
         grounded_ = (Physics.Raycast(transform.position, Vector3.down * (myCC_.height / 1.5f), LayerMask.NameToLayer("Ground")));
 
-        Debug.DrawRay(transform.position, Vector3.down * myCC_.height, Color.red);
+        //Debug.DrawRay(transform.position, Vector3.down * myCC_.height, Color.red);
 
     }
 
     void Update()
     {
+        //Manages the cooldown of the roll
         if (!canRoll_)
         {
             if (elapsedTime_ >= cooldownTime_)
@@ -99,6 +100,7 @@ public class PlayerRoll : MonoBehaviour
             }
         }
 
+        //Manage the change of the collider during the roll so it can return to normal when finish
         if (rolling_)
         {
             if(startTimeRoll_ + rollTime_ < Time.time)
@@ -115,6 +117,7 @@ public class PlayerRoll : MonoBehaviour
 
     }
 
+    //Corutine which moves the player in the roll direction until the roll time is over
     IEnumerator RollStart()
     {
 

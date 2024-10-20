@@ -5,6 +5,7 @@ using UnityEngine;
 public class OutZoneComponent : MonoBehaviour
 {
 
+    //Restart the player position when it touch it
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -15,15 +16,4 @@ public class OutZoneComponent : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
