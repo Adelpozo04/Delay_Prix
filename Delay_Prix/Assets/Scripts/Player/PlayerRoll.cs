@@ -12,27 +12,56 @@ public class PlayerRoll : MonoBehaviour
 
     [SerializeField] private Animator myAni_;
 
-    private Vector3 move;
+    private float elapsedTime_ = 0;
 
-    private bool grounded;
+    private bool canRoll_ = true;
+
+    private bool rolling_ = false;
+
+    private bool grounded_;
 
     #endregion
 
     #region parameters
 
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float gravity;
+    [SerializeField] private float rollForce_;
 
-    private float actualVelocity;
+    [SerializeField] private float rollTime_;
+
+    [SerializeField] private float cooldownTime_;
+
+    [SerializeField] private float heightRolling_;
+
+    [SerializeField] private float yCenterRolling_;
+
+    private float originalHeight_;
+    private float originalY_;
+
+    private float startTimeRoll_;
 
     #endregion
 
     public void Roll(InputAction.CallbackContext context)
     {
 
-        if (grounded && context.started)
+        if (grounded_ && context.started && canRoll_)
         {
-            actualVelocity = jumpForce;
+            //Flip the cam and model while rolling
+
+            canRoll_ = false;
+
+            rolling_ = true;
+
+            myCC_.height = heightRolling_;
+
+            myCC_.center.Set(myCC_.center.x, yCenterRolling_, myCC_.center.z);
+
+            startTimeRoll_ = Time.time;
+
+            myAni_.SetTrigger("Roll");
+
+            StartCoroutine(RollStart());
+
         }
 
     }
@@ -42,6 +71,8 @@ public class PlayerRoll : MonoBehaviour
     {
 
         myCC_ = GetComponent<CharacterController>();
+        originalHeight_ = myCC_.height;
+        originalY_ = myCC_.center.y;
 
     }
 
@@ -49,17 +80,55 @@ public class PlayerRoll : MonoBehaviour
     void FixedUpdate()
     {
 
-        myCC_.Move(move * Time.deltaTime);
-
-        grounded = (Physics.Raycast(transform.position, Vector3.down * (myCC_.height / 1.5f), LayerMask.NameToLayer("Ground")));
+        grounded_ = (Physics.Raycast(transform.position, Vector3.down * (myCC_.height / 1.5f), LayerMask.NameToLayer("Ground")));
 
         Debug.DrawRay(transform.position, Vector3.down * myCC_.height, Color.red);
 
-        myAni_.SetBool("OnGround", grounded);
+    }
 
+    void Update()
+    {
+        if (!canRoll_)
+        {
+            if (elapsedTime_ >= cooldownTime_)
+            {
+                canRoll_ = true;
+                elapsedTime_ = 0;
+            }
+            else
+            {
+                elapsedTime_ += Time.deltaTime;
+            }
+        }
 
-        //hacer un raycast hacia abajo para comprobar si se puede saltar
+        if (rolling_)
+        {
+            if(startTimeRoll_ + rollTime_ < Time.time)
+            {
 
+                myCC_.center.Set(myCC_.center.x, originalY_, myCC_.center.z);
+                myCC_.height = originalHeight_;
+                
+                rolling_ = false;
+            }
+        }
+        
+    }
 
+    IEnumerator RollStart()
+    {
+
+        while(startTimeRoll_ + rollTime_ > Time.time)
+        {
+
+            Debug.Log("Roll");
+
+            myCC_.Move( Vector3.Normalize(gameObject.GetComponent<PlayerMovement>().GetDir()) * rollForce_ * Time.deltaTime);
+
+            yield return null;
+
+        }
+
+        
     }
 }

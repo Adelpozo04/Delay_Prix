@@ -69,6 +69,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public Vector3 GetDir()
+    {
+        return dir_;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -91,8 +96,6 @@ public class PlayerMovement : MonoBehaviour
         {
             myCC_.SimpleMove(speed_ * localXZ);
         }
-
-
 
         myAni_.SetFloat("VelocityZ", dir_.z);
         myAni_.SetFloat("VelocityX", dir_.x);
