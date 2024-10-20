@@ -58,8 +58,6 @@ public class PlayerRoll : MonoBehaviour
 
             startTimeRoll_ = Time.time;
 
-            myAni_.SetTrigger("Roll");
-
             StartCoroutine(RollStart());
 
         }
@@ -112,7 +110,9 @@ public class PlayerRoll : MonoBehaviour
                 rolling_ = false;
             }
         }
-        
+
+        myAni_.SetBool("Rolling", rolling_);
+
     }
 
     IEnumerator RollStart()
