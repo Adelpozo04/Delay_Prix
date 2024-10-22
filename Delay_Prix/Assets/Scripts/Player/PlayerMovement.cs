@@ -63,7 +63,9 @@ public class PlayerMovement : MonoBehaviour
     //Returns the direction of movement of the player
     public Vector3 GetDir()
     {
-        return dir_;
+        float camRot = myCam_.transform.eulerAngles.y;
+
+        return Quaternion.Euler(0, camRot, 0) * dir_;
     }
 
     // Start is called before the first frame update
@@ -73,7 +75,6 @@ public class PlayerMovement : MonoBehaviour
         myCC_= GetComponent<CharacterController>();
         myCamMov_= GetComponent<CameraMovement>();
         
-
     }
 
     // Update is called once per frame

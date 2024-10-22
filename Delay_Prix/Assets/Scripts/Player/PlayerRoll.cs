@@ -8,9 +8,11 @@ public class PlayerRoll : MonoBehaviour
 
     #region properties
 
+    [SerializeField] private Animator myAni_;
+
     private CharacterController myCC_;
 
-    [SerializeField] private Animator myAni_;
+    private CameraMovement myCameraMovement_;
 
     private float elapsedTime_ = 0;
 
@@ -58,6 +60,8 @@ public class PlayerRoll : MonoBehaviour
 
             startTimeRoll_ = Time.time;
 
+            myCameraMovement_.TurnModelToCamera();
+
             StartCoroutine(RollStart());
 
         }
@@ -69,6 +73,8 @@ public class PlayerRoll : MonoBehaviour
     {
 
         myCC_ = GetComponent<CharacterController>();
+        myCameraMovement_= GetComponent<CameraMovement>();
+
         originalHeight_ = myCC_.height;
         originalY_ = myCC_.center.y;
 
@@ -124,7 +130,7 @@ public class PlayerRoll : MonoBehaviour
         while(startTimeRoll_ + rollTime_ > Time.time)
         {
 
-            Debug.Log("Roll");
+            Debug.Log(Vector3.Normalize(gameObject.GetComponent<PlayerMovement>().GetDir()));
 
             myCC_.Move( Vector3.Normalize(gameObject.GetComponent<PlayerMovement>().GetDir()) * rollForce_ * Time.deltaTime);
 

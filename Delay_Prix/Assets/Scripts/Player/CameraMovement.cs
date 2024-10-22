@@ -41,6 +41,13 @@ public class CameraMovement : MonoBehaviour
         model_.transform.right = mainCam_.transform.right;
     }
 
+    public Camera GetMainCamera()
+    {
+
+        return mainCam_;
+
+    }
+
     // Update is called once per frame
     void Update()
     {

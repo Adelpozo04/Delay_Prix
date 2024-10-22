@@ -770,10 +770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a544f01a16faa44eb4327ba4216022e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myAni_: {fileID: 1475957062}
-  rollForce_: 5
+  rollForce_: 10
   rollTime_: 0.25
-  cooldownTime_: 3
+  cooldownTime_: 2
   heightRolling_: 1.63
   yCenterRolling_: -1.58
 --- !u!82 &486081322

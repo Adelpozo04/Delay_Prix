@@ -82,6 +82,8 @@ public class FollowRoute : MonoBehaviour
         
         myNavMesh_= GetComponent<NavMeshAgent>();
 
+        myNavMesh_.updateRotation = false;
+
     }
 
     //Change the target when it is close enought to the current target
