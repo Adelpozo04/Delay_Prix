@@ -58,6 +58,10 @@ public class PlayerRoll : MonoBehaviour
 
             myCC_.center.Set(myCC_.center.x, yCenterRolling_, myCC_.center.z);
 
+            Debug.Log(yCenterRolling_);
+
+            Debug.Log(myCC_.center);
+
             startTimeRoll_ = Time.time;
 
             myCameraMovement_.TurnModelToCamera();
@@ -106,6 +110,7 @@ public class PlayerRoll : MonoBehaviour
             }
         }
 
+        //Probar a cambiar esto para que se vuelva a los valores natuirales al acabar una animacion
         //Manage the change of the collider during the roll so it can return to normal when finish
         if (rolling_)
         {
@@ -129,8 +134,6 @@ public class PlayerRoll : MonoBehaviour
 
         while(startTimeRoll_ + rollTime_ > Time.time)
         {
-
-            Debug.Log(Vector3.Normalize(gameObject.GetComponent<PlayerMovement>().GetDir()));
 
             myCC_.Move( Vector3.Normalize(gameObject.GetComponent<PlayerMovement>().GetDir()) * rollForce_ * Time.deltaTime);
 
