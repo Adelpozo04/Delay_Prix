@@ -15,9 +15,11 @@ public class GameManager : MonoBehaviour
     [Tooltip("It must be in seconds")]
     [SerializeField] private float maxTime_;
 
+    [SerializeField] private int pointsPerSecond_ = 100;
+
     private float currentTime_;
 
-    private int score;
+    private int score_;
 
     #endregion
 
@@ -61,12 +63,23 @@ public class GameManager : MonoBehaviour
 
         if (countScore)
         {
-            score = (int)currentTime_  * 1000;
+            score_ += (int)currentTime_  * pointsPerSecond_;
 
-            PlayerPrefs.SetInt("TestScore", score);
+            PlayerPrefs.SetInt("TestScore", score_);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("TestScore", 0);
         }
 
         SceneManager.LoadScene(2);
+
+    }
+
+    public void AddScore(int score)
+    {
+
+        score_ += score;
 
     }
 
