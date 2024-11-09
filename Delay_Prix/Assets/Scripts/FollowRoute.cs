@@ -87,7 +87,7 @@ public class FollowRoute : MonoBehaviour
     }
 
     //Change the target when it is close enought to the current target
-    void Update()
+    void FixedUpdate()
     {
 
         if (Vector3.Distance(transform.position, routePoints_[targetIndex_].transform.position) <= distance)

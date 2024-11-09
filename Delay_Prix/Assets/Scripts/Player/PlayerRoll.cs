@@ -72,6 +72,11 @@ public class PlayerRoll : MonoBehaviour
 
     }
 
+    public bool isRolling()
+    {
+        return rolling_;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

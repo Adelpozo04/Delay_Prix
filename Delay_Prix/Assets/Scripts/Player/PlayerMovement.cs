@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
 
     private CameraMovement myCamMov_;
 
-
     #endregion
 
     #region parameters
@@ -43,12 +42,14 @@ public class PlayerMovement : MonoBehaviour
     //Updates the direction where the player is moving
     public void ChangeDir(InputAction.CallbackContext context)
     {
+        myCC_.enabled = true;
         dir_ = context.ReadValue<Vector3>();
     }
 
     //Detects if the player is pressing the button of running to enter in that state and stop it when he stop pressing it
     public void Running(InputAction.CallbackContext context)
     {
+
         if (context.phase == InputActionPhase.Started)
         {
             running_ = true;
@@ -66,6 +67,13 @@ public class PlayerMovement : MonoBehaviour
         float camRot = myCam_.transform.eulerAngles.y;
 
         return Quaternion.Euler(0, camRot, 0) * dir_;
+    }
+
+    public bool isMoving()
+    {
+
+        return dir_ != Vector3.zero;
+
     }
 
     // Start is called before the first frame update
@@ -94,10 +102,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (running_)
         {
+            myCC_.enabled = true;
             myCC_.SimpleMove((speed_ + acceleration_) * localXZ);
         }
         else
         {
+            myCC_.enabled = true;
             myCC_.SimpleMove(speed_ * localXZ);
         }
 
