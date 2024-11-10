@@ -102,12 +102,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (running_)
         {
-            myCC_.enabled = true;
             myCC_.SimpleMove((speed_ + acceleration_) * localXZ);
         }
         else
         {
-            myCC_.enabled = true;
             myCC_.SimpleMove(speed_ * localXZ);
         }
 
