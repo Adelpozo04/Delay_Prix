@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 5694668375524072545}
   - component: {fileID: 1399537371297246889}
   - component: {fileID: 706921523556976749}
-  - component: {fileID: 2671171132868243155}
-  - component: {fileID: 6824636081273070464}
-  m_Layer: 0
+  - component: {fileID: 4785852374046084275}
+  m_Layer: 10
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,20 +127,8 @@ MonoBehaviour:
   minActivationTime_: 0.5
   maxActivationTime_: 2
   cooldownTime_: 1
---- !u!114 &2671171132868243155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3676821232222510375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1917e522fa8ed64c8efa886a72b7804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &6824636081273070464
-BoxCollider:
+--- !u!64 &4785852374046084275
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -155,9 +142,10 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0033255, y: 4.5196223, z: 1.3744254}
-  m_Center: {x: 0.0016624931, y: -1.8097951, z: 0.27011693}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8070298290176478403, guid: 32812f864ffc68f45aa97b19014b7867, type: 3}

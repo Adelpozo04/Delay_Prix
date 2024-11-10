@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 8346590576572517936}
   - component: {fileID: 6625581796709294673}
   - component: {fileID: 1474693677043203430}
-  - component: {fileID: 5318620192170037216}
-  - component: {fileID: 2056285055427263782}
-  m_Layer: 0
+  - component: {fileID: 3098474166868822328}
+  m_Layer: 10
   m_Name: SpringPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,8 +88,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5318620192170037216
-BoxCollider:
+--- !u!64 &3098474166868822328
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,24 +103,13 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.1324825, y: 2.4513597, z: 2.080163}
-  m_Center: {x: 0.037974127, y: 1.2050375, z: -0.04066003}
---- !u!114 &2056285055427263782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4284142198184925767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1917e522fa8ed64c8efa886a72b7804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7159946465811131861, guid: 32812f864ffc68f45aa97b19014b7867, type: 3}
 --- !u!1 &7759327165059448932
 GameObject:
   m_ObjectHideFlags: 0

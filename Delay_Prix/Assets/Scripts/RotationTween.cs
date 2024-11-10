@@ -28,7 +28,7 @@ public class RotationTween : MonoBehaviour
     void Update()
     {
 
-        transform.RotateAround(transform.position, rotAxis_, rotationSpeed_);
+        transform.RotateAround(transform.position, rotAxis_, rotationSpeed_ * Time.deltaTime);
 
     }
 }

@@ -84,7 +84,9 @@ public class PlayerJump : MonoBehaviour
 
         grounded = (Physics.Raycast(transform.position, Vector3.down * (myCC_.height / 1.5f), LayerMask.NameToLayer("Ground")));
 
-        //Debug.DrawRay(transform.position, Vector3.down * myCC_.height, Color.red);
+        Debug.Log(grounded);
+
+        Debug.DrawRay(transform.position, Vector3.down * (myCC_.height / 1.5f), Color.red);
 
         myAni_.SetBool("OnGround", grounded);
 

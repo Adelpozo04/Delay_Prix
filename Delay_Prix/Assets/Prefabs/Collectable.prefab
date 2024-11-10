@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e378ce71f59dd434a89d318d51a5d067, type: 2}
     - target: {fileID: 919132149155446097, guid: 7301f56a8c3b11b4282675825df9b5d9, type: 3}
       propertyPath: m_Name
-      value: gem (1)
+      value: Collectable
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7301f56a8c3b11b4282675825df9b5d9, type: 3}
       propertyPath: m_Layer
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a263ba8f2e4fb2547b52b44f6d0d3251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed_: 1
+  rotationSpeed_: 10
   rotAxis_: {x: 0, y: 1, z: 0}
 --- !u!114 &5647718791652579754
 MonoBehaviour:
