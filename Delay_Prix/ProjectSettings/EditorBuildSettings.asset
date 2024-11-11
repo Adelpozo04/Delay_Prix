@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScoreCountMenu.unity
     guid: 0710448a1b6f6c44b9d7b26a80fb3c11
+  - enabled: 1
+    path: Assets/Scenes/OrangeBox 2.unity
+    guid: 5be931dee5aede34b90ecc34fc3bd2e9
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 941cb6e0f1492a14f8feb8ccdd1c0dac
   m_configObjects: {}

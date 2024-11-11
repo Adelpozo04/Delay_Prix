@@ -58,21 +58,21 @@ public class GameManager : MonoBehaviour
     }
 
     //Finish the match counting the score depending on if the player ran out of time or if he reached the goal
-    public void FinishMatch(bool countScore)
+    public void FinishMatch(bool countScore, int sceneIndex)
     {
 
         if (countScore)
         {
-            score_ += (int)currentTime_  * pointsPerSecond_;
+            score_ += PlayerPrefs.GetInt("TestScore") + ((int)currentTime_  * pointsPerSecond_);
 
             PlayerPrefs.SetInt("TestScore", score_);
         }
         else
         {
-            PlayerPrefs.SetInt("TestScore", 0);
+            PlayerPrefs.SetInt("TestScore", PlayerPrefs.GetInt("TestScore"));
         }
 
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(sceneIndex);
 
     }
 
@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
             if (currentTime_ <= 0)
             {
                 stopTime_= true;
-                FinishMatch(false);
+                FinishMatch(false, 2);
             }
             else
             {

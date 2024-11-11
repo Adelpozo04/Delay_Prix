@@ -8,9 +8,13 @@ public class SceneComponent : MonoBehaviour
 
     private AudioSource sound_;
 
+    [SerializeField] private bool restartScore_;
+
     //Is used to change the scene by pressing a button, which will call this method
     public void ChangeScene(int sceneIndex)
     {
+
+        Debug.Log("Change");
 
         sound_.Play();
 
@@ -30,8 +34,15 @@ public class SceneComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        Debug.Log("Hola");
         
         sound_= GetComponent<AudioSource>();
+
+        if (restartScore_)
+        {
+            PlayerPrefs.SetInt("TestScore", 0);
+        }
 
     }
 

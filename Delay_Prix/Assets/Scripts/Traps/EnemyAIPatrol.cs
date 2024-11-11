@@ -12,13 +12,14 @@ public class EnemyAIPatrol : MonoBehaviour
     private NavMeshAgent myNMA_;
     private Animator myAnim_;
     private Vector3 destPoint_;
+    private ViewPlayer myVP_;
     private bool walkPointSet_ = false;
 
     #endregion
 
     #region references
 
-    private GameObject player_;
+    [SerializeField] private GameObject player_;
 
     #endregion
 
@@ -36,12 +37,8 @@ public class EnemyAIPatrol : MonoBehaviour
             SelectRandomDestination();
         }
         {
-            Debug.Log("Move to destination");
-
             myNMA_.SetDestination(destPoint_);
         }
-
-        Debug.Log(Vector3.Distance(transform.position, destPoint_) + " < " + arriveRange_);
         
 
         if (Vector3.Distance(transform.position, destPoint_) < arriveRange_)
@@ -60,7 +57,6 @@ public class EnemyAIPatrol : MonoBehaviour
 
         if(Physics.Raycast(destPoint_, Vector3.down, 100, groundLayer_))
         {
-            Debug.Log("Change destination");
 
             walkPointSet_ = true;
         }
@@ -73,6 +69,7 @@ public class EnemyAIPatrol : MonoBehaviour
         
         myNMA_ = GetComponent<NavMeshAgent>();
         myAnim_= GetComponent<Animator>();
+        myVP_ = GetComponent<ViewPlayer>();
 
     }
 
@@ -80,9 +77,19 @@ public class EnemyAIPatrol : MonoBehaviour
     void Update()
     {
 
-        Patrol();
+        if (myVP_.PlayerDetected())
+        {
+            myNMA_.SetDestination(player_.transform.position);
+            myAnim_.SetBool("walk", true);
+        }
+        else
+        {
+            Patrol();
+            myAnim_.SetBool("walk", walkPointSet_);
+        }
+        
 
-        myAnim_.SetBool("walk", walkPointSet_);
+        
 
     }
 }
