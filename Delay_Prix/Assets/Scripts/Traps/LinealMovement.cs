@@ -17,13 +17,15 @@ public class LinealMovement : MonoBehaviour
     void Start()
     {
         myRB_= GetComponent<Rigidbody>();
+
+        myRB_.AddForce(transform.forward * speed_);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        myRB_.MovePosition(transform.position + transform.rotation * new Vector3(0, 0, 1) * speed_ * Time.deltaTime);
+        //myRB_.MovePosition(transform.position + transform.rotation * new Vector3(0, 0, 1) * speed_ * Time.deltaTime);
 
     }
 }

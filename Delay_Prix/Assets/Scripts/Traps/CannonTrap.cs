@@ -8,6 +8,7 @@ public class CannonTrap : Trap
     #region parameters
 
     [SerializeField] private float instantiateDistance_;
+    [SerializeField] private float force_;
 
     #endregion
 
@@ -37,7 +38,13 @@ public class CannonTrap : Trap
 
         myAnim_.SetTrigger("ActivateTrap");
 
-        Instantiate(bullets_, transform.position + (transform.rotation * new Vector3(0, 0, 1) * instantiateDistance_), transform.rotation);
+        Vector3 direction = transform.position + (transform.rotation * new Vector3(0, 0, 1) * instantiateDistance_);
+
+        direction.y += 5;
+
+        GameObject bullet = Instantiate(bullets_, direction, transform.rotation);
+
+        //bullet.GetComponent<Rigidbody>().AddForce(transform.rotation * new Vector3(0, 0, 1) * force_ * Time.deltaTime);
 
         particles_.Play();
 
