@@ -37,6 +37,8 @@ public class Trap : MonoBehaviour
     protected virtual void Start()
     {
         
+        waitTime_ = Random.Range(minActivationTime_, maxActivationTime_);
+
     }
 
     // Update is called once per frame

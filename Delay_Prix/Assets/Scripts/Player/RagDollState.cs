@@ -22,6 +22,8 @@ public class RagDollState : MonoBehaviour
 
     [SerializeField] private Animator myAnim_;
 
+    [SerializeField] private GameObject model_;
+
     #endregion
 
     #region parameters
@@ -31,18 +33,15 @@ public class RagDollState : MonoBehaviour
     #endregion
 
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    public bool getRagDoll()
     {
-
-        if (hit.gameObject.layer == LayerMask.NameToLayer("Trap"))
-        {
-            EnableRagDoll();
-        }
-
+        return ragdolled_;
     }
 
     public void DisableRagDoll()
     {
+
+        transform.position = model_.transform.position + Vector3.up * 2;
 
         myCC_.enabled = true;
         myAnim_.enabled = true;
@@ -120,7 +119,7 @@ public class RagDollState : MonoBehaviour
             else
             {
                 elapsedTime_ += Time.deltaTime;
-            }
+            }            
 
         }
 

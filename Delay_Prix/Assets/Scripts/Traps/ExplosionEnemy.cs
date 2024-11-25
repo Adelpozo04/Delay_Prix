@@ -51,7 +51,6 @@ public class ExplosionEnemy : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(myVP_.PlayerDetected() + " " + Vector3.Distance(transform.position, player_.transform.position));
 
         if (myVP_.PlayerDetected() && Vector3.Distance(transform.position, player_.transform.position) < distanceToExplote_)
         {   

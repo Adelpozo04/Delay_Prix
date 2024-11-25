@@ -34,8 +34,6 @@ public class SceneComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        Debug.Log("Hola");
         
         sound_= GetComponent<AudioSource>();
 

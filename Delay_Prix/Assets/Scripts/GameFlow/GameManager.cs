@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     private bool stopTime_ = false;
 
+    private string sceneName_;
+
 
     static private GameManager instance_;
 
@@ -63,14 +65,20 @@ public class GameManager : MonoBehaviour
 
         if (countScore)
         {
+            Debug.Log(currentTime_);
+
+            PlayerPrefs.SetInt("TestScore", 0);
+
             score_ += PlayerPrefs.GetInt("TestScore") + ((int)currentTime_  * pointsPerSecond_);
 
             PlayerPrefs.SetInt("TestScore", score_);
         }
         else
         {
-            PlayerPrefs.SetInt("TestScore", PlayerPrefs.GetInt("TestScore"));
+            PlayerPrefs.SetInt("TestScore", 0);
         }
+
+        PlayerPrefs.SetString("LastScene", sceneName_);
 
         SceneManager.LoadScene(sceneIndex);
 
@@ -88,6 +96,8 @@ public class GameManager : MonoBehaviour
     public void RestartPlayer()
     {
 
+        player_.GetComponent<RagDollState>().DisableRagDoll();
+
         player_.GetComponent<CharacterController>().enabled = false;    
 
         player_.transform.position = current_checkpoint;
@@ -100,6 +110,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance_ = this;
+
+        sceneName_ = SceneManager.GetActiveScene().name;
     }
 
     // Start is called before the first frame update

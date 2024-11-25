@@ -58,10 +58,6 @@ public class PlayerRoll : MonoBehaviour
 
             myCC_.center.Set(myCC_.center.x, yCenterRolling_, myCC_.center.z);
 
-            Debug.Log(yCenterRolling_);
-
-            Debug.Log(myCC_.center);
-
             startTimeRoll_ = Time.time;
 
             myCameraMovement_.TurnModelToCamera();
