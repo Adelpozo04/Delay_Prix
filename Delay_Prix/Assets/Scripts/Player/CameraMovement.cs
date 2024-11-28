@@ -33,6 +33,8 @@ public class CameraMovement : MonoBehaviour
 
         dir_ = context.ReadValue<Vector3>();
 
+        gameObject.GetComponent<CameraComponent>().SetNewPosition(mainCam_.transform.localPosition);
+
     }
 
     //Turn the player model to face where the camera is facing

@@ -15,6 +15,7 @@ public class RagDollState : MonoBehaviour
     private PlayerInput myPI_;
     private bool ragdolled_ = false;
     private float elapsedTime_ = 0;
+    private Vector3 originalCameraPos_;
 
     #endregion
 
@@ -24,6 +25,9 @@ public class RagDollState : MonoBehaviour
 
     [SerializeField] private GameObject model_;
 
+    [SerializeField] private Camera mainCamera_;
+
+    
     #endregion
 
     #region parameters
@@ -43,10 +47,12 @@ public class RagDollState : MonoBehaviour
 
         transform.position = model_.transform.position + Vector3.up * 2;
 
+        gameObject.GetComponent<CameraComponent>().RestartCameraPos();
+
         myCC_.enabled = true;
         myAnim_.enabled = true;
         myPI_.enabled = true;
-        ragdolled_ = false;
+        ragdolled_ = false; 
 
         foreach (var joint in joints_)
         {
@@ -63,6 +69,8 @@ public class RagDollState : MonoBehaviour
             rigidbody.isKinematic = true;
             rigidbody.detectCollisions = false;
         }
+
+
     }
 
     public void EnableRagDoll()
@@ -96,6 +104,7 @@ public class RagDollState : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+
         ragdollRigidBodies_ = GetComponentsInChildren<Rigidbody>();
         joints_ = GetComponentsInChildren<CharacterJoint>();
         colliders_ = GetComponentsInChildren<Collider>();
@@ -103,6 +112,13 @@ public class RagDollState : MonoBehaviour
         myPI_ = GetComponent<PlayerInput>();
 
         DisableRagDoll();
+    }
+
+    private void Start()
+    {
+
+        
+
     }
 
     // Update is called once per frame
@@ -119,6 +135,7 @@ public class RagDollState : MonoBehaviour
             else
             {
                 elapsedTime_ += Time.deltaTime;
+                mainCamera_.transform.position = model_.transform.position + mainCamera_.transform.up * 2 + mainCamera_.transform.forward * -6;
             }            
 
         }
