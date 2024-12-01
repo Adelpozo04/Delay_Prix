@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SquareFloor
       objectReference: {fileID: 0}
+    - target: {fileID: 4415148183144917909, guid: 909e77e3e1dcb04448dd453e6a6cd3a9, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8450394136717062193, guid: 909e77e3e1dcb04448dd453e6a6cd3a9, type: 3}
       propertyPath: m_LocalScale.x
       value: 5

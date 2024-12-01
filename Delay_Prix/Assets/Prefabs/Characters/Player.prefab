@@ -73,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCam_: {fileID: 2396208172163187793}
   model_: {fileID: 6871665300653091055}
-  camSpeed_: 50
+  camSpeed_: 100
 --- !u!114 &8820920829050637842
 MonoBehaviour:
   m_ObjectHideFlags: 0

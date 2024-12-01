@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846c977d423b7c447b30ad8361f6bc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceHit_: 100
+  forceHit_: 300
   hitMiddle_: {fileID: 8204889807653766351}
 --- !u!4 &6594128634722215531 stripped
 Transform:

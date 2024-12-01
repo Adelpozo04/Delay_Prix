@@ -16,24 +16,33 @@ public class HitPlayer : MonoBehaviour
 
     [SerializeField] private Transform hitMiddle_;
 
+    private bool noHit_;
+
     #endregion
+
+    public void EffetActivation(bool activate)
+    {
+        noHit_ = activate;
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
-
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Player") && !collision.gameObject.GetComponent<RagDollState>().getRagDoll())
+        if (!noHit_)
         {
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !collision.gameObject.GetComponent<RagDollState>().getRagDoll())
+            {
 
-            Debug.Log("Hammer Collision");
+                Debug.Log("Hammer Collision");
 
-            collision.gameObject.GetComponent<RagDollState>().EnableRagDoll();
+                collision.gameObject.GetComponent<RagDollState>().EnableRagDoll();
 
-            Vector3 vectorHit = collision.gameObject.transform.position - hitMiddle_.position;
+                Vector3 vectorHit = collision.gameObject.transform.position - hitMiddle_.position;
 
-            GameObject playerBody_ = collision.transform.GetChild(1).GetChild(1).GetChild(2).GetChild(0).gameObject;
+                GameObject playerBody_ = collision.transform.GetChild(1).GetChild(1).GetChild(2).GetChild(0).gameObject;
 
-            playerBody_.GetComponent<Rigidbody>().AddForceAtPosition(vectorHit * forceHit_, playerBody_.gameObject.transform.position, ForceMode.Impulse);
+                playerBody_.GetComponent<Rigidbody>().AddForceAtPosition(vectorHit * forceHit_, playerBody_.gameObject.transform.position, ForceMode.Impulse);
 
+            }
         }
         
     }
