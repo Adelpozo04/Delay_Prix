@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3525836158394341379, guid: 204d1ef977892804894c64e96e75383f, type: 3}
       propertyPath: m_Name
-      value: Props_11 Variant
+      value: MovingPlatform
       objectReference: {fileID: 0}
     - target: {fileID: 3525836158394341379, guid: 204d1ef977892804894c64e96e75383f, type: 3}
       propertyPath: m_Layer
@@ -80,10 +80,7 @@ PrefabInstance:
       addedObject: {fileID: 1125556391278948288}
     - targetCorrespondingSourceObject: {fileID: 3525836158394341379, guid: 204d1ef977892804894c64e96e75383f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6668071251065439727}
-    - targetCorrespondingSourceObject: {fileID: 3525836158394341379, guid: 204d1ef977892804894c64e96e75383f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2962227519243320567}
+      addedObject: {fileID: 2228932410903540398}
   m_SourcePrefab: {fileID: 100100000, guid: 204d1ef977892804894c64e96e75383f, type: 3}
 --- !u!1 &6192218846161301828 stripped
 GameObject:
@@ -129,29 +126,8 @@ MonoBehaviour:
   - {fileID: 0}
   behaviour_: 0
   distance: 2
---- !u!65 &6668071251065439727
+--- !u!65 &2228932410903540398
 BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6192218846161301828}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 0.32934806, z: 2}
-  m_Center: {x: 0.0000000012237854, y: 0.08212685, z: -0.000000002447571}
---- !u!64 &2962227519243320567
-MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -168,7 +144,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8132423522751337658, guid: 32812f864ffc68f45aa97b19014b7867, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2, y: 0.22647041, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}

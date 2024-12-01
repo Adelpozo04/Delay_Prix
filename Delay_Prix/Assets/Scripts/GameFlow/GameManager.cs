@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //class that controls all the game flow during a match
 public class GameManager : MonoBehaviour
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
     #region references
 
     [SerializeField] private GameObject player_;
+
+    [SerializeField] private LoopAlfa splashScreen_;
 
     #endregion
 
@@ -95,6 +99,7 @@ public class GameManager : MonoBehaviour
     //It has to disable the character controller in order to stop its position change during the teleport
     public void RestartPlayer()
     {
+        splashScreen_.StartEffect(1, true);
 
         player_.GetComponent<RagDollState>().DisableRagDoll();
 
