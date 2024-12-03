@@ -31,9 +31,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private LoopAlfa splashScreen_;
 
+    [SerializeField] private GameObject pauseMenu_;
+
     #endregion
 
     #region properties
+
+    [SerializeField] private bool isTime_ = true;
 
     private Timer myTimer_;
 
@@ -111,6 +115,20 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void Pause()
+    {
+        pauseMenu_.SetActive(true);
+
+        Time.timeScale = 0;
+    }
+
+    public void Resume()
+    {
+        pauseMenu_.SetActive(false);
+
+        Time.timeScale = 1;
+    }
+
     //Make thhe GameManager a singletone
     private void Awake()
     {
@@ -132,7 +150,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //check the time of the match and update the timer
-        if (!stopTime_)
+        if (!stopTime_ && isTime_)
         {
             if (currentTime_ <= 0)
             {

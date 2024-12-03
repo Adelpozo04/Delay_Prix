@@ -203,7 +203,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 3.58
+  m_Height: 3.29
   m_Radius: 0.47
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -237,12 +237,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a544f01a16faa44eb4327ba4216022e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  model_: {fileID: 6871665300653091055}
   myAni_: {fileID: 855825740951683786}
   rollForce_: 10
   rollTime_: 0.5
   cooldownTime_: 2
   heightRolling_: 1.6
   yCenterRolling_: -1.58
+  modelOffset_: 0.5
 --- !u!82 &7353795075347439854
 AudioSource:
   m_ObjectHideFlags: 0

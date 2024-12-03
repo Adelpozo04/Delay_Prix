@@ -6,6 +6,12 @@ using UnityEngine.InputSystem;
 public class PlayerRoll : MonoBehaviour
 {
 
+    #region references
+
+    [SerializeField] private GameObject model_;
+
+    #endregion
+
     #region properties
 
     [SerializeField] private Animator myAni_;
@@ -36,6 +42,8 @@ public class PlayerRoll : MonoBehaviour
 
     [SerializeField] private float yCenterRolling_;
 
+    [SerializeField] private float modelOffset_;
+
     private float originalHeight_;
     private float originalY_;
 
@@ -49,6 +57,10 @@ public class PlayerRoll : MonoBehaviour
 
         if (grounded_ && context.started && canRoll_)
         {
+
+            Vector3 auxPos = model_.transform.localPosition + Vector3.up * modelOffset_;
+
+            model_.transform.localPosition = auxPos;
 
             canRoll_ = false;
 
@@ -103,6 +115,7 @@ public class PlayerRoll : MonoBehaviour
             if (elapsedTime_ >= cooldownTime_)
             {
                 canRoll_ = true;
+
                 elapsedTime_ = 0;
             }
             else
@@ -120,7 +133,10 @@ public class PlayerRoll : MonoBehaviour
 
                 myCC_.center.Set(myCC_.center.x, originalY_, myCC_.center.z);
                 myCC_.height = originalHeight_;
-                
+
+                Vector3 auxPos = model_.transform.localPosition - Vector3.up * modelOffset_;
+                model_.transform.localPosition = auxPos;
+
                 rolling_ = false;
             }
         }
