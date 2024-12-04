@@ -32,9 +32,6 @@ public class TutorialCheckpoint : MonoBehaviour
         
         if(!playerArrive_ && other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-
-            Debug.Log("Touch");
-
             player_.GetComponent<PlayerInput>().enabled = false;
             playerArrive_= true;
             enterText_.gameObject.SetActive(true);
@@ -57,7 +54,6 @@ public class TutorialCheckpoint : MonoBehaviour
 
         if (playerArrive_ && Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log(playerArrive_ + " / " + textCounter_ + "<" + text_.Length);
 
             if(textCounter_ < text_.Length)
             {

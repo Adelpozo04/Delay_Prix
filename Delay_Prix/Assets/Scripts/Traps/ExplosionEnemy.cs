@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+using UnityEngine.AI;
 
 public class ExplosionEnemy : MonoBehaviour
 {
@@ -16,6 +19,7 @@ public class ExplosionEnemy : MonoBehaviour
     private ViewPlayer myVP_;
     private DestroyAfterTime myDAT_;
     private Animator myAnim_;
+    private AnimatorStateInfo infoAnim_;
     private EnemyAIPatrol myEP_;
 
     #endregion
@@ -28,16 +32,20 @@ public class ExplosionEnemy : MonoBehaviour
 
     #endregion
 
-    public void Explote()
+    public void StartExplotion()
     {
         myAnim_.SetBool("walk", false);
         myAnim_.SetTrigger("attack");
         particles_.SetActive(true);
         particles_.GetComponent<ParticleSystem>().Play();   
         myEP_.enabled= false;
+        
+    }
+
+    public void Explote()
+    {
         myDAT_.enabled = true;
         explosiveWave_.SetActive(true);
-        
     }
 
     // Start is called before the first frame update
@@ -46,15 +54,26 @@ public class ExplosionEnemy : MonoBehaviour
         myVP_= GetComponent<ViewPlayer>();
         myDAT_= GetComponent<DestroyAfterTime>();
         myAnim_= GetComponent<Animator>();
-        myEP_= GetComponent<EnemyAIPatrol>();
+        infoAnim_ = myAnim_.GetCurrentAnimatorStateInfo(0);
+        myEP_ = GetComponent<EnemyAIPatrol>();
     }
 
     private void Update()
     {
+        infoAnim_ = myAnim_.GetCurrentAnimatorStateInfo(0);
 
         if (myVP_.PlayerDetected() && Vector3.Distance(transform.position, player_.transform.position) < distanceToExplote_)
-        {   
-            Explote();
+        {
+            StartExplotion();
+        }
+
+        if (infoAnim_.IsName("attack01"))
+        {
+            if (infoAnim_.normalizedTime % 1.0 >= 0.8)
+            {
+                
+                Explote();
+            }
         }
     }
 

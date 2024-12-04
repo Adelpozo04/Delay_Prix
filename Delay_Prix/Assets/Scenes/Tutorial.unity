@@ -1588,7 +1588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6394691360274581732, guid: ef6b53473c4cc64429bee3ec816e96ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 197
+      value: 266.87
       objectReference: {fileID: 0}
     - target: {fileID: 6394691360274581732, guid: ef6b53473c4cc64429bee3ec816e96ca, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1596,7 +1596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6394691360274581732, guid: ef6b53473c4cc64429bee3ec816e96ca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 241.5
+      value: 241.6
       objectReference: {fileID: 0}
     - target: {fileID: 6394691360274581732, guid: ef6b53473c4cc64429bee3ec816e96ca, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1624,6 +1624,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6394691360274581732, guid: ef6b53473c4cc64429bee3ec816e96ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353795075347439854, guid: ef6b53473c4cc64429bee3ec816e96ca, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2665,6 +2669,18 @@ PrefabInstance:
       propertyPath: player_
       value: 
       objectReference: {fileID: 602138276}
+    - target: {fileID: 1434275815608682343, guid: d131489508db7b845a598f1e53702a95, type: 3}
+      propertyPath: m_Radius
+      value: 0.44444555
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434275815608682343, guid: d131489508db7b845a598f1e53702a95, type: 3}
+      propertyPath: m_Center.x
+      value: -0.050104108
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434275815608682343, guid: d131489508db7b845a598f1e53702a95, type: 3}
+      propertyPath: m_Center.z
+      value: -0.0054503647
+      objectReference: {fileID: 0}
     - target: {fileID: 4140205866681470305, guid: d131489508db7b845a598f1e53702a95, type: 3}
       propertyPath: player_
       value: 
@@ -2720,6 +2736,26 @@ PrefabInstance:
     - target: {fileID: 5191425775681686932, guid: d131489508db7b845a598f1e53702a95, type: 3}
       propertyPath: m_Name
       value: BombMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246311208554017908, guid: d131489508db7b845a598f1e53702a95, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807364217589129627, guid: d131489508db7b845a598f1e53702a95, type: 3}
+      propertyPath: time_
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174771000673029208, guid: d131489508db7b845a598f1e53702a95, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174771000673029208, guid: d131489508db7b845a598f1e53702a95, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174771000673029208, guid: d131489508db7b845a598f1e53702a95, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
