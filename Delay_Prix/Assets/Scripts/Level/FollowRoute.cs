@@ -55,7 +55,7 @@ public class FollowRoute : MonoBehaviour
 
                 targetIndex_ = targetIndex_ - 1;
 
-                if (targetIndex_ == 0) targetIndex_ = routePoints_.Length - 1;
+                if (targetIndex_ < 0) targetIndex_ = routePoints_.Length - 1;
 
                 break;
             case Behaviour.Random:

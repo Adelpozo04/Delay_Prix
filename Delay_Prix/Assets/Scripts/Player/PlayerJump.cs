@@ -34,7 +34,16 @@ public class PlayerJump : MonoBehaviour
 
     private void ApplyGravity()
     {
-        move = myPM_.getDir();
+
+        if (isJumping())
+        {
+            move = myPM_.getDir() * 2;
+        }
+        else
+        {
+            move = Vector3.zero;
+        }
+
         move.y = actualVelocity;
 
         if (grounded && move.y < 0)

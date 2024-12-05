@@ -8,7 +8,7 @@ public class CannonTrap : Trap
     #region parameters
 
     [SerializeField] private float instantiateDistance_;
-    [SerializeField] private float force_;
+    [SerializeField] private float bulletHeight_ = 3;
 
     #endregion
 
@@ -40,11 +40,9 @@ public class CannonTrap : Trap
 
         Vector3 direction = transform.position + (transform.rotation * new Vector3(0, 0, 1) * instantiateDistance_);
 
-        direction.y += 5;
+        direction.y += bulletHeight_;
 
         GameObject bullet = Instantiate(bullets_, direction, transform.rotation);
-
-        //bullet.GetComponent<Rigidbody>().AddForce(transform.rotation * new Vector3(0, 0, 1) * force_ * Time.deltaTime);
 
         particles_.Play();
 
