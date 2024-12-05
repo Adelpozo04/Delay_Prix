@@ -105,9 +105,12 @@ public class GameManager : MonoBehaviour
     {
         splashScreen_.StartEffect(1, true);
 
-        player_.GetComponent<RagDollState>().DisableRagDoll();
-
-        player_.GetComponent<CharacterController>().enabled = false;    
+        if (player_.GetComponent<RagDollState>().getRagDoll())
+        {
+            player_.GetComponent<RagDollState>().DisableRagDoll();
+        }
+        
+        player_.GetComponent<CharacterController>().enabled = false;
 
         player_.transform.position = current_checkpoint;
 

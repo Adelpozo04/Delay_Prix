@@ -20,6 +20,8 @@ public class CameraComponent : MonoBehaviour
     public void RestartCameraPos()
     {
 
+        Debug.Log(mainCamera_.transform.localPosition + " = " + cameraOriginalPos_);
+
         mainCamera_.transform.localPosition = cameraOriginalPos_;
 
     }

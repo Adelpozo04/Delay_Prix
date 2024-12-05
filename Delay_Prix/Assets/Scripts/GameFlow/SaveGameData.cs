@@ -16,7 +16,7 @@ public class SaveGameData : MonoBehaviour
     public void Save()
     {
 
-        string[] muldata = new string[] { PlayerPrefs.GetInt("Level1").ToString(), PlayerPrefs.GetInt("Level2").ToString() };
+        string[] muldata = new string[] { PlayerPrefs.GetInt("Level1").ToString(), PlayerPrefs.GetInt("Level2").ToString(), PlayerPrefs.GetInt("Level3").ToString() };
 
         string dataToSave = string.Join("|", muldata);
 

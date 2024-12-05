@@ -19,6 +19,7 @@ public class LoadGameData : MonoBehaviour
         string[] multidataloaded = loadData.Split('|');
         PlayerPrefs.SetInt("Level1", int.Parse(multidataloaded[0]));
         PlayerPrefs.SetInt("Level2", int.Parse(multidataloaded[1]));
+        PlayerPrefs.SetInt("Level3", int.Parse(multidataloaded[2]));
 
     }
 
