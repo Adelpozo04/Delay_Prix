@@ -5,13 +5,11 @@ using UnityEngine;
 public class PlatformActivation : MonoBehaviour
 {
 
-    [SerializeField] private FollowRoute[] platformsToActivate; 
+    [SerializeField] private FollowRoute[] platformsToActivate;
 
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collision)
     {
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
 
             for (int i = 0; i < platformsToActivate.Length; i++)
@@ -20,8 +18,6 @@ public class PlatformActivation : MonoBehaviour
             }
 
         }
-
     }
-
 
 }

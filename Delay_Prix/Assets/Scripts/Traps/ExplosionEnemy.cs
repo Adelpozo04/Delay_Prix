@@ -21,6 +21,7 @@ public class ExplosionEnemy : MonoBehaviour
     private Animator myAnim_;
     private AnimatorStateInfo infoAnim_;
     private EnemyAIPatrol myEP_;
+    private bool exploted_ = false;
 
     #endregion
 
@@ -39,6 +40,7 @@ public class ExplosionEnemy : MonoBehaviour
         particles_.SetActive(true);
         particles_.GetComponent<ParticleSystem>().Play();   
         myEP_.enabled= false;
+        exploted_ = true;
         
     }
 
@@ -67,11 +69,10 @@ public class ExplosionEnemy : MonoBehaviour
             StartExplotion();
         }
 
-        if (infoAnim_.IsName("attack01"))
+        if (infoAnim_.IsName("attack01") && exploted_)
         {
             if (infoAnim_.normalizedTime % 1.0 >= 0.8)
             {
-                
                 Explote();
             }
         }

@@ -11,6 +11,8 @@ public class PlayerJump : MonoBehaviour
 
     private CharacterController myCC_;
 
+    private PlayerMovement myPM_;
+
     [SerializeField] private Animator myAni_;
 
     private Vector3 move;
@@ -32,6 +34,7 @@ public class PlayerJump : MonoBehaviour
 
     private void ApplyGravity()
     {
+        move = myPM_.getDir();
         move.y = actualVelocity;
 
         if (grounded && move.y < 0)
@@ -71,6 +74,7 @@ public class PlayerJump : MonoBehaviour
     {
         
         myCC_= GetComponent<CharacterController>();
+        myPM_= GetComponent<PlayerMovement>();
 
     }
 

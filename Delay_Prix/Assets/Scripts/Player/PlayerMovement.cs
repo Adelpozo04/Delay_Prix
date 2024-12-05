@@ -76,6 +76,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public Vector3 getDir()
+    {
+        return Quaternion.Euler(0, myCam_.transform.eulerAngles.y, 0) * dir_;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
