@@ -27,7 +27,8 @@ public class RagDollState : MonoBehaviour
 
     [SerializeField] private Camera mainCamera_;
 
-    
+    [SerializeField] private AudioSource hitSound_;
+
     #endregion
 
     #region parameters
@@ -76,7 +77,7 @@ public class RagDollState : MonoBehaviour
     public void EnableRagDoll()
     {
 
-        Debug.Log("Active Ragdoll");
+        hitSound_.Play();
 
         myCC_.enabled = false;
         myAnim_.enabled = false;

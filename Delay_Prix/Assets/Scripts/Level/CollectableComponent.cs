@@ -17,10 +17,22 @@ public class CollectableComponent : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
 
-            GameManager.Instance.AddScore(collectablePoints_);
-
-            Destroy(gameObject);
+            GetComponent<AudioSource>().Play();
+            StartCoroutine(waitForSound()); GameManager.Instance.AddScore(collectablePoints_);
 
         }
     }
+
+    IEnumerator waitForSound()
+    {
+        //Wait Until Sound has finished playing
+        while (GetComponent<AudioSource>().isPlaying)
+        {
+            yield return null;
+        }
+
+        Destroy(gameObject);
+    }
+
+
 }

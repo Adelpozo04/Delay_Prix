@@ -23,6 +23,8 @@ public class CheckpointComponent : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Player") && !checkpointTaken_)
         {
 
+            GetComponent<AudioSource>().Play();
+
             checkpointTaken_ = true;
 
             Vector3 pos = transform.position + new Vector3(0, spawnOffset_, 0);

@@ -7,6 +7,12 @@ using UnityEngine.InputSystem.XR;
 public class PlayerJump : MonoBehaviour
 {
 
+    #region references
+
+    [SerializeField] private AudioSource jumpSound_;
+
+    #endregion
+
     #region properties
 
     private CharacterController myCC_;
@@ -34,16 +40,6 @@ public class PlayerJump : MonoBehaviour
 
     private void ApplyGravity()
     {
-
-        if (isJumping())
-        {
-            move = myPM_.getDir() * 2;
-        }
-        else
-        {
-            move = Vector3.zero;
-        }
-
         move.y = actualVelocity;
 
         if (grounded && move.y < 0)
@@ -66,6 +62,7 @@ public class PlayerJump : MonoBehaviour
 
         if (grounded && context.started)
         {
+            jumpSound_.Play();
             actualVelocity = jumpForce;       
         }
 

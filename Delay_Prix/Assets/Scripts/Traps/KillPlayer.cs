@@ -11,6 +11,7 @@ public class KillPlayer : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("RagDoll"))
         {
 
+            GetComponent<AudioSource>().Play();
             GameManager.Instance.RestartPlayer();
 
         }

@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private GameObject model_;
 
+    [SerializeField] private AudioSource footsteps_;
+
     #endregion
 
     #region properties
@@ -42,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     //Updates the direction where the player is moving
     public void ChangeDir(InputAction.CallbackContext context)
     {
+        
         myCC_.enabled = true;
         dir_ = context.ReadValue<Vector3>();
     }
@@ -84,8 +87,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        myCC_= GetComponent<CharacterController>();
+        footsteps_.enabled = false;
+        myCC_ = GetComponent<CharacterController>();
         myCamMov_= GetComponent<CameraMovement>();
         
     }
@@ -102,16 +105,23 @@ public class PlayerMovement : MonoBehaviour
         if (dir_ != Vector3.zero)
         {
             myCamMov_.TurnModelToCamera();
-            
+            footsteps_.enabled = true;
+
+        }
+        else
+        {
+            footsteps_.enabled = false;
         }
 
         if (running_)
         {
             myCC_.SimpleMove((speed_ + acceleration_) * localXZ);
+            footsteps_.pitch = 1.5f;
         }
         else
         {
             myCC_.SimpleMove(speed_ * localXZ);
+            footsteps_.pitch = 1;
         }
 
         myAni_.SetFloat("VelocityZ", dir_.z);

@@ -46,6 +46,7 @@ public class ExplosionEnemy : MonoBehaviour
 
     public void Explote()
     {
+        GetComponent<AudioSource>().Play();
         myDAT_.enabled = true;
         explosiveWave_.SetActive(true);
     }
