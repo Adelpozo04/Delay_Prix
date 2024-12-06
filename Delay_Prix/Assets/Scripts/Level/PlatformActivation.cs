@@ -14,6 +14,8 @@ public class PlatformActivation : MonoBehaviour
 
             for (int i = 0; i < platformsToActivate.Length; i++)
             {
+                GetComponent<AudioSource>().Play();
+
                 platformsToActivate[i].enabled = true;
             }
 

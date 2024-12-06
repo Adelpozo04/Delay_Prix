@@ -22,6 +22,7 @@ public class ExplosionEnemy : MonoBehaviour
     private AnimatorStateInfo infoAnim_;
     private EnemyAIPatrol myEP_;
     private bool exploted_ = false;
+    private bool finishExplosion_ = false;
 
     #endregion
 
@@ -49,6 +50,7 @@ public class ExplosionEnemy : MonoBehaviour
         GetComponent<AudioSource>().Play();
         myDAT_.enabled = true;
         explosiveWave_.SetActive(true);
+        finishExplosion_= true;
     }
 
     // Start is called before the first frame update
@@ -74,7 +76,11 @@ public class ExplosionEnemy : MonoBehaviour
         {
             if (infoAnim_.normalizedTime % 1.0 >= 0.8)
             {
-                Explote();
+                if (!finishExplosion_)
+                {
+                    Explote();
+                }
+                
             }
         }
     }
