@@ -277,7 +277,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346668635db11cf41834e62f95058cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime_: 210
+  timesDiff_:
+  - 200
+  - 160
+  - 120
   pointsPerSecond_: 100
   player_: {fileID: 486081312}
   splashScreen_: {fileID: 2005081654}

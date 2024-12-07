@@ -136,15 +136,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6394691360274581732, guid: ef6b53473c4cc64429bee3ec816e96ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.9
+      value: 91.7
       objectReference: {fileID: 0}
     - target: {fileID: 6394691360274581732, guid: ef6b53473c4cc64429bee3ec816e96ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.326
+      value: 22.72
       objectReference: {fileID: 0}
     - target: {fileID: 6394691360274581732, guid: ef6b53473c4cc64429bee3ec816e96ca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -167.48
+      value: 82.6
       objectReference: {fileID: 0}
     - target: {fileID: 6394691360274581732, guid: ef6b53473c4cc64429bee3ec816e96ca, type: 3}
       propertyPath: m_LocalRotation.w
@@ -642,7 +642,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346668635db11cf41834e62f95058cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime_: 280
+  timesDiff_:
+  - 300
+  - 240
+  - 180
   pointsPerSecond_: 100
   player_: {fileID: 965639579}
   splashScreen_: {fileID: 883964567}

@@ -23,7 +23,28 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject[] levelsReference_;
 
+    [SerializeField] private GameObject[] difficultyButtons_ = new GameObject[3];
+
     #endregion
+
+    public void SetDifficulty(int difficulty)
+    {
+        PlayerPrefs.SetInt("LevelDiff", difficulty);
+
+        for (int i = 0; i < difficultyButtons_.Length; ++i)
+        {
+            if (i + 1 == difficulty)
+            {
+                difficultyButtons_[i].GetComponent<Image>().color = Color.yellow;
+            }
+            else
+            {
+                difficultyButtons_[i].GetComponent<Image>().color = Color.white;
+            }
+        }
+
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +70,24 @@ public class LevelManager : MonoBehaviour
             Debug.LogError("not same size in levels info");
         }
 
+        if (PlayerPrefs.HasKey("LevelDiff"))
+        {
+            for (int i = 0; i < difficultyButtons_.Length; ++i)
+            {
+                if (i + 1 == PlayerPrefs.GetInt("LevelDiff"))
+                {
+                    difficultyButtons_[i].GetComponent<Image>().color = Color.yellow;
+                }
+                else
+                {
+                    difficultyButtons_[i].GetComponent<Image>().color = Color.white;
+                }
+            }
+        }
+        else
+        {
+            SetDifficulty(2);
+        }
         
 
     }

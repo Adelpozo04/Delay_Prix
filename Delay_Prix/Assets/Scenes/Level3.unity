@@ -1959,7 +1959,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346668635db11cf41834e62f95058cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime_: 280
+  timesDiff_:
+  - 320
+  - 270
+  - 220
   pointsPerSecond_: 100
   player_: {fileID: 1808713137}
   splashScreen_: {fileID: 1866142503}

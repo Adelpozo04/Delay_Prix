@@ -11,11 +11,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-
     #region parameters
 
     [Tooltip("It must be in seconds")]
-    [SerializeField] private float maxTime_;
+    [SerializeField] private float[] timesDiff_ = new float [3];
+
+    private float maxTime_;
 
     [SerializeField] private int pointsPerSecond_ = 100;
 
@@ -64,6 +65,28 @@ public class GameManager : MonoBehaviour
     {
 
         current_checkpoint = checkpoint;
+
+    }
+
+    private void SetDifficulty()
+    {
+
+        if(PlayerPrefs.GetInt("LevelDiff") == 1)
+        {
+            maxTime_ = timesDiff_[0];
+        }
+        else if(PlayerPrefs.GetInt("LevelDiff") == 2)
+        {
+            maxTime_ = timesDiff_[1];
+        }
+        else if (PlayerPrefs.GetInt("LevelDiff") == 3)
+        {
+            maxTime_ = timesDiff_[2];
+        }
+        else
+        {
+            maxTime_ = timesDiff_[1];
+        }
 
     }
 
@@ -143,7 +166,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        SetDifficulty();
         currentTime_ = maxTime_;
         myTimer_ = GetComponent<Timer>();
 
