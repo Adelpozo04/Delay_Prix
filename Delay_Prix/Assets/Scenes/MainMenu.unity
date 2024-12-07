@@ -6101,10 +6101,12 @@ MonoBehaviour:
   scoreTexts_:
   - {fileID: 1912115867}
   - {fileID: 1930822318}
+  - {fileID: 709783693}
   valueType_: 0
   scorePath_:
   - Level1
   - Level2
+  - Level3
   scoreValues_: 
 --- !u!4 &1890756496
 Transform:
