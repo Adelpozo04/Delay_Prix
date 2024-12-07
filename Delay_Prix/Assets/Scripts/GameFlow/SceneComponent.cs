@@ -14,10 +14,6 @@ public class SceneComponent : MonoBehaviour
     public void ChangeScene(int sceneIndex)
     {
 
-        Debug.Log("Change");
-
-        sound_.Play();
-
         SceneManager.LoadScene(sceneIndex);
 
     }

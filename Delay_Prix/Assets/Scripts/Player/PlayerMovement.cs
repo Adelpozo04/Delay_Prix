@@ -105,8 +105,16 @@ public class PlayerMovement : MonoBehaviour
         if (dir_ != Vector3.zero)
         {
             myCamMov_.TurnModelToCamera();
-            footsteps_.enabled = true;
 
+            if (!GetComponent<PlayerJump>().isJumping())
+            {
+                footsteps_.enabled = true;
+            }
+            else
+            {
+                footsteps_.enabled = false;
+            }
+            
         }
         else
         {

@@ -9,47 +9,40 @@ public class CreateProcedural : MonoBehaviour
     [SerializeField] private GameObject rocks_;
     [SerializeField] private GameObject specialBuilding_;
 
-    Color[,] colorOfPixel;
-    public Texture2D outlineImage;
+    [SerializeField] private Color[,] colorOfPixel_;
+    [SerializeField] private Texture2D outlineImage_;
+    [SerializeField] private TextAsset outlineText_;
 
-    int column, row;
-    GameObject t;
+    [SerializeField] private float offset_;
 
     void Start()
     {
-        //GenerateFromFile();
-        GenerateFromImage();
+        GenerateFromFile();
+        //GenerateFromImage();
 
     }
 
     void GenerateFromFile()
     {
-        TextAsset t1 = (TextAsset)Resources.Load("atrezzo", typeof(TextAsset));
-        string s = t1.text;
+        string s = outlineText_.text;
         int i;
         s = s.Replace(System.Environment.NewLine, "");
 
         for (i = 0; i < s.Length; i++)
         {
-            column = i % 10;
-            row = i / 10;
+            int nColumns_ = i % 10;
+            int nRows_ = i / 10;
             if (s[i] == '1')
             {
-                t = (GameObject)(Instantiate(wall, new Vector3(50 - column * 10, 1.5f, 50 - row * 10), Quaternion.identity));
+               Instantiate(tree_, new Vector3(transform.position.x - nColumns_ * offset_, transform.position.y, transform.position.z - nRows_ * offset_), Quaternion.identity);
             }
-
-
-            if (s[i] == '2')
+            else if (s[i] == '2')
             {
-
-                t = (GameObject)(Instantiate(target, new Vector3(50 - column * 10, 1.5f, 50 - row * 10), Quaternion.identity));
-                t.name = "target";
+                Instantiate(rocks_, new Vector3(transform.position.x - nColumns_ * offset_, transform.position.y, transform.position.z - nRows_ * offset_), Quaternion.identity);
             }
-
-            if (s[i] == '3')
+            else if (s[i] == '3')
             {
-
-                t = (GameObject)(Instantiate(NPC, new Vector3(50 - column * 10, 1.5f, 50 - row * 10), Quaternion.identity));
+                Instantiate(specialBuilding_, new Vector3(transform.position.x - nColumns_ * offset_, transform.position.y, transform.position.z - nRows_ * offset_), Quaternion.identity);
             }
 
         }
@@ -58,44 +51,28 @@ public class CreateProcedural : MonoBehaviour
     void GenerateFromImage()
     {
 
-        colorOfPixel = new Color[outlineImage.width, outlineImage.height];
+        colorOfPixel_ = new Color[outlineImage_.width, outlineImage_.height];
 
-        for (int x = 0; x < outlineImage.width; x++)
+        for (int x = 0; x < outlineImage_.width; x++)
         {
-            for (int y = 0; y < outlineImage.height; y++)
+            for (int y = 0; y < outlineImage_.height; y++)
             {
-                colorOfPixel[x, y] = outlineImage.GetPixel(x, y);
-                float r, g, b;
-                r = colorOfPixel[x, y].r;
-                g = colorOfPixel[x, y].g;
-                b = colorOfPixel[x, y].b;
-                if (g > 0.9) print("some green detected");
-                //print("RGB="+r+"."+b+"."+b);
 
+                colorOfPixel_[x, y] = outlineImage_.GetPixel(x, y);
 
-                if (colorOfPixel[x, y] == Color.black)
+                if (colorOfPixel_[x, y] == Color.green)
                 {
-
-                    GameObject t = (GameObject)(Instantiate(smallerWall, new Vector3((outlineImage.width / 2 * 1) - x * 1, 1.5f, (outlineImage.height / 2 * 1) - y * 1), Quaternion.identity));
-
+                    Debug.Log("Green");
+                    Instantiate(tree_, new Vector3((transform.position.x / 2 * 1) - x * offset_, transform.position.y, (transform.position.z / 2 * 1) - y * offset_), Quaternion.identity);
                 }
-
-
-
-
-                else if (colorOfPixel[x, y] == Color.blue)
+                else if (colorOfPixel_[x, y] == Color.blue)
                 {
-                    GameObject t = (GameObject)(Instantiate(smallWater, new Vector3((outlineImage.width / 2 * 1) - x * 1, -1.0f, (outlineImage.height / 2 * 1) - y * 1), Quaternion.identity));
+                    Instantiate(rocks_, new Vector3((transform.position.x / 2 * 1) - x * offset_, transform.position.y, (transform.position.z / 2 * 1) - y * offset_), Quaternion.identity);
                 }
-
-                else if (colorOfPixel[x, y] == Color.red)
+                else if (colorOfPixel_[x, y] == Color.red)
                 {
-                    GameObject t = (GameObject)(Instantiate(tree, new Vector3((outlineImage.width / 2 * 1) - x * 1, 2.0f, (outlineImage.height / 2 * 1) - y * 1), Quaternion.identity));
-
+                    Instantiate(specialBuilding_, new Vector3((transform.position.x / 2 * 1) - x * offset_, transform.position.y, (transform.position.z / 2 * 1) - y * offset_), Quaternion.identity);
                 }
-
-
-
 
             }
         }

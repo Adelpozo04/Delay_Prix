@@ -19,18 +19,12 @@ public class CameraComponent : MonoBehaviour
 
     public void RestartCameraPos()
     {
-
-        Debug.Log(mainCamera_.transform.localPosition + " = " + cameraOriginalPos_);
-
         mainCamera_.transform.localPosition = cameraOriginalPos_;
-
     }
 
     public void SetNewPosition(Vector3 pos)
     {
-
         cameraOriginalPos_= pos;
-
     }
 
     // Start is called before the first frame update

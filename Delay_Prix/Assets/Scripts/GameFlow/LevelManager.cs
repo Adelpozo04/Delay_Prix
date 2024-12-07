@@ -23,6 +23,8 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject[] levelsReference_;
 
+    [SerializeField] private GameObject[] unlockText_;
+
     [SerializeField] private GameObject[] difficultyButtons_ = new GameObject[3];
 
     #endregion
@@ -60,6 +62,7 @@ public class LevelManager : MonoBehaviour
                 {
                     levelsReference_[i].GetComponent<Button>().enabled = false;
                     levelsReference_[i].GetComponent<Image>().color = Color.gray;
+                    unlockText_[i].SetActive(true);
                 }
 
             }
